@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| solids4foam: solid mechanics and fluid-solid interaction simulations        |
+| Version:     v2.0                                                           |
+| Web:         https://solids4foam.github.io                                  |
+| Disclaimer:  This offering is not approved or endorsed by OpenCFD Limited,  |
+|              producer and distributor of the OpenFOAM software via          |
+|              www.openfoam.com, and owner of the OPENFOAM® and OpenCFD®      |
+|              trade marks.                                                   |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      solidProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solidModel     mindlinPlate;
+
+mindlinPlateCoeffs
+{
+    // Plate thickness
+    plateThickness    plateThickness [ 0 1 0 0 0 0 0 ] 2.0;
+
+    // Maximum number of momentum correctors
+    nCorrectors       50000;
+
+    // Solution tolerance for displacement
+    solutionTolerance 1e-12;
+
+    // Alternative solution tolerance for displacement
+    alternativeTolerance 1e-12;
+
+    // Material law solution tolerance
+    //materialTolerance 1e-05;
+
+    // Write frequency for the residuals
+    infoFrequency   1;
+
+    // true for coupled 
+    // false for segregated
+    coupled false;
+
+    // Segregated laplacian stabilization coefficients
+    // 0 for non stabilization
+    // 1 for total stabilization
+    alphaW          0.9;
+    alphaTheta      0.9;
+}
+
+// ************************************************************************* //
